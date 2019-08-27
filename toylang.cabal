@@ -2,7 +2,7 @@ name:                toylang
 version:             0.1.0.0
 -- synopsis:
 -- description:
-homepage:            https://github.com/githubuser/lang#readme
+homepage:            https://stackoverflow.com/questions/57680170/tagless-final-dsl-with-rvalue-lvalue-problems#readme
 license:             BSD3
 license-file:        LICENSE
 author:              Markus Mayer

@@ -4,7 +4,7 @@
 {-# LANGUAGE TypeSynonymInstances #-}
 
 module ToyLang where
-{- Details in -}
+{- See https://stackoverflow.com/questions/57680170/tagless-final-dsl-with-rvalue-lvalue-problems for details -}
 
 import           Control.Monad.Writer.Lazy
 import           Data.Monoid               ((<>))
