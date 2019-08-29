@@ -21,5 +21,6 @@ executable toylang
   build-depends:       base >= 4.7 && < 5
                      , mtl
   other-modules:       ToyLang
+                     , ToyLang2
 
 

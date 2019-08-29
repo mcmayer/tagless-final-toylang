@@ -4,7 +4,9 @@
 {-# LANGUAGE TypeSynonymInstances #-}
 
 module ToyLang where
-{- See https://stackoverflow.com/questions/57680170/tagless-final-dsl-with-rvalue-lvalue-problems for details -}
+{- See https://stackoverflow.com/questions/57680170/tagless-final-dsl-with-rvalue-lvalue-problems for details 
+   All the troublesome lines involving (.+) are commented out in order to make it compile.   
+-}
 
 import           Control.Monad.Writer.Lazy
 import           Data.Monoid               ((<>))
@@ -20,12 +22,12 @@ class Monad m => ToyLang m where
     comment :: String -> m ()
     int :: String -> m (Expr L)
     (.=) :: Expr L -> Expr lr -> m (Expr L)
-    (.+) :: Expr lr -> Expr lr' -> Expr R
+--    (.+) :: Expr lr -> Expr lr' -> Expr R
     ret :: Expr lr -> m (Maybe Int)
     end :: m ()
 
 infix 1 .=
-infixl 6 .+
+--infixl 6 .+
 
 num :: Int -> Expr R
 num = Num . Just
@@ -47,7 +49,7 @@ instance ToyLang (Writer String) where
     (.=) (Var n _) e = do
         tell $ n <> " = " <> toString e <> "\n"
         return $ Var n (toVal e)
-    (.+) e1 e2 = Num ((+) <$> toVal e1 <*> toVal e2)
+--    (.+) e1 e2 = Num ((+) <$> toVal e1 <*> toVal e2)
     ret (Var n mi) = do
         tell $ "ret " <> n <> "\n"
         return mi
@@ -62,7 +64,7 @@ toy = do
     comment "set a = 1"
     a <- int "a"
     a .= num 1
-    a .= a .+ num 1
+--    a .= a .+ num 1
     ret a
 
 
